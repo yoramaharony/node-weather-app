@@ -57,12 +57,6 @@ app.get('/weather', (req, res) => {
         if (error){
             return res.send({error})            
         }
-
-        // if (error){
-        //     return res.send({
-        //         error: 'Can not find location'
-        //     })
-        // }
         
         forecast(longitude, latitude, (error, forecastData) => {
             if (error){
@@ -71,7 +65,7 @@ app.get('/weather', (req, res) => {
 
             res.send({
                 address: req.query.address,
-                forecast: forecastData.temperature,
+                forecast: ' temperatures of ' + forecastData.temperature + ' degrees and the humidity of '+ forecastData.humidity,
                 location
             })              
         })
